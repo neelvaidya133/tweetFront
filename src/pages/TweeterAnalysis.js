@@ -68,7 +68,7 @@ function TweeterAnalysis() {
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
-                  <TableRow>
+                  <StyledTableRow>
                     <StyledTableCell>Name</StyledTableCell>
                     <StyledTableCell align="right">Followers</StyledTableCell>
                     <StyledTableCell align="right">Following</StyledTableCell>
@@ -77,11 +77,11 @@ function TweeterAnalysis() {
                     <StyledTableCell align="right">Total Reply</StyledTableCell>
                     <StyledTableCell align="right">Total Re-Tweet</StyledTableCell>
                     <StyledTableCell align="right">Created Date</StyledTableCell>
-                  </TableRow>
+                  </StyledTableRow>
                 </TableHead>
                 <TableBody>
                   {tweeterData?.tweetData.map((row) => (
-                    <TableRow
+                    <StyledTableRow
                       key={tweeterData.name}
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
@@ -103,7 +103,7 @@ function TweeterAnalysis() {
                       <StyledTableCell align="left">
                         {format(new Date(row.created_at), 'yyyy-MM-d')}
                       </StyledTableCell>
-                    </TableRow>
+                    </StyledTableRow>
                   ))}
                 </TableBody>
               </Table>
