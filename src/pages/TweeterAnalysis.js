@@ -89,15 +89,11 @@ function TweeterAnalysis() {
   const getBotometerData = async () => {
     if (search) {
       const URL = `http://localhost:5000/getUserBotometer?userName=${search}`;
-      await axios
-        .get(URL)
-        .then((res) => {
-          console.log('Response From API ==> ', res);
-          setTweeterData(res.data);
-        })
-        .catch((err) => {
-          console.log('Error From API ==> ', err);
-        });
+      const response = await axios.get(URL);
+
+      if (response?.data) {
+        setTweeterData(response.data);
+      }
     }
   };
 
@@ -134,8 +130,7 @@ function TweeterAnalysis() {
           backgroundImage: `linear-gradient(135deg, ${divRGBA1} 0%, ${divRGBA2} 100%)`
         }}
       >
-        <Iconify icon="ant-design:apple-filled" width={24} height={24} />
-        {/* <Iconify icon={Icon} width={24} height={24} /> */}
+        <Iconify icon={Icon} width={24} height={24} />
       </div>
       <Typography variant="h3">{cardTotalCount}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
@@ -167,6 +162,9 @@ function TweeterAnalysis() {
             Fetch Data
           </Button>
         </Stack>
+        {/* <Stack direction="row" alignItems="flex-end" justifyContent="flex-end" marginBottom="2rem"> */}
+        {/*  hiiii */}
+        {/* </Stack> */}
 
         <Grid container spacing={3} paddingBottom="1rem">
           <Grid item xs={12} sm={6} md={3}>
@@ -178,7 +176,7 @@ function TweeterAnalysis() {
               'rgba(0, 123, 85, 0.24)',
               'Fake Followers Ratio',
               tweeterData?.userScoreData?.display_scores?.english?.fake_follower || '0',
-              PersonAddAlt
+              'ant-design:usergroup-add-outlined'
             )}
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -190,7 +188,7 @@ function TweeterAnalysis() {
               'rgba(12, 83, 183, 0.24)',
               'Self Declared Ratio',
               tweeterData?.userScoreData?.display_scores?.english?.self_declared || '0',
-              PersonAddAlt
+              'ant-design:user-add-outlined'
             )}
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -202,7 +200,7 @@ function TweeterAnalysis() {
               'rgba(183, 129, 3, 0.24)',
               'Spammer Ratio',
               tweeterData?.userScoreData?.display_scores?.english?.spammer || '0',
-              Report
+              'ant-design:warning-outlined'
             )}
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -214,7 +212,7 @@ function TweeterAnalysis() {
               'rgba(183, 33, 54, 0.24)',
               'Overall Ratio',
               tweeterData?.userScoreData?.display_scores?.english?.overall || '0',
-              Report
+              'ant-design:file-text-outlined'
             )}
           </Grid>
         </Grid>
