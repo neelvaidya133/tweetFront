@@ -88,7 +88,7 @@ function TweeterAnalysis() {
 
   const getBotometerData = async () => {
     if (search) {
-      const URL = `http://localhost:5000/getUserBotometer?userName=${search}`;
+      const URL = `https://botometer.herokuapp.com/getUserBotometer?userName=${search}`;
       const response = await axios.get(URL);
 
       if (response?.data) {
