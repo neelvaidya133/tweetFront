@@ -91,8 +91,10 @@ function TweeterAnalysis() {
       const URL = `https://botometer.herokuapp.com/getUserBotometer?userName=${search}`;
       const response = await axios.get(URL);
 
+console.log( response.data)
       if (response?.data) {
         setTweeterData(response.data);
+        
       }
     }
   };
