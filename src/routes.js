@@ -19,7 +19,7 @@ export default function Router() {
   return useRoutes([
     {
       path: '/dashboard',
-      element: <DashboardLayout />,
+      element: <TweeterAnalysis />,
       children: [
         { path: 'app', element: <DashboardApp /> },
         { path: 'twitterAnalysis', element: <TweeterAnalysis /> },
